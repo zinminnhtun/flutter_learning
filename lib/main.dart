@@ -20,33 +20,39 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter map'),
-          centerTitle: true,
-        ),
-        floatingActionButton: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FloatingActionButton(
-              onPressed: () => print('pressed'),
-              child: Icon(Icons.add),
-            ),
-            SizedBox(height: 10.0),
-            FloatingActionButton(
-              onPressed: () => print('pressed1'),
-              child: Icon(Icons.add),
-            ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  // here
+  int currentIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        appBar: AppBar(title: Text('Flutter map'), centerTitle: true),
+        body: currentIndex == 0 ? Center(child: Text('Home')) : Center(child: Text('Profile')),
+        bottomNavigationBar: NavigationBar(
+          destinations: [
+            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
           ],
+          onDestinationSelected: (int value) {
+            setState(() {
+              currentIndex = value;
+            });
+          },
+          selectedIndex: currentIndex,
         ),
-        bottomNavigationBar: NavigationBar(destinations: [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        onDestinationSelected: (int value) => print(value),
-        selectedIndex: 1,
-        ),
-      ),
     );
   }
 }
