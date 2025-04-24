@@ -25,6 +25,20 @@ class MyApp extends StatelessWidget {
           title: Text('Flutter map'),
           centerTitle: true,
         ),
+        floatingActionButton: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FloatingActionButton(
+              onPressed: () => print('pressed'),
+              child: Icon(Icons.add),
+            ),
+            SizedBox(height: 10.0),
+            FloatingActionButton(
+              onPressed: () => print('pressed1'),
+              child: Icon(Icons.add),
+            ),
+          ],
+        ),
         bottomNavigationBar: NavigationBar(destinations: [
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
