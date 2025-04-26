@@ -4,55 +4,42 @@ void main() {
   runApp(const MyApp());
 }
 
-// stateless
-// material app
+// material app(Stateful)
 // scaffold
-class MyApp extends StatelessWidget {
+// App title
+// bottom navigation bar set state
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyappState();
+}
+
+class _MyappState extends State<MyApp> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.dark,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal,brightness: Brightness.dark),
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  // here
-  int currentIndex = 0;
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-        appBar: AppBar(title: Text('Flutter map'), centerTitle: true),
-        body: currentIndex == 0 ? Center(child: Text('Home')) : Center(child: Text('Profile')),
+      home: Scaffold(
+        appBar: AppBar(title: Text("Flutter Map"),),
         bottomNavigationBar: NavigationBar(
           destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+            NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+            NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
           ],
-          onDestinationSelected: (int value) {
+          onDestinationSelected: (int value){
             setState(() {
-              currentIndex = value;
+              selectedIndex = value;
             });
-          },
-          selectedIndex: currentIndex,
+          } ,
+          selectedIndex: selectedIndex,
         ),
+      ),
     );
   }
 }
