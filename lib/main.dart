@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal,brightness: isDarkMode ? Brightness.dark : Brightness.light),
       ),
       home: const WidgetTree(),
-    )
+    );
     });
   }
 }
