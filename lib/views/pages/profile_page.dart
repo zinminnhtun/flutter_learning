@@ -10,6 +10,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   TextEditingController controller = TextEditingController();
   bool? isChecked = false;
+  bool isSwitched = false;
+  double sliderValue = 0.0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,13 +21,11 @@ class _ProfilePageState extends State<ProfilePage> {
           TextField(
             controller: controller,
             decoration: InputDecoration(border: OutlineInputBorder()),
-            onEditingComplete: () {
-              setState(() {});
-            },
+            onEditingComplete: () => setState(() {}),
           ),
           Text(controller.text),
-          Checkbox(
-            tristate: true,
+          Checkbox.adaptive(
+            // tristate: true,
             value: isChecked,
             onChanged: (bool? value) {
               setState(() {
@@ -33,14 +33,42 @@ class _ProfilePageState extends State<ProfilePage> {
               });
             },
           ),
-          CheckboxListTile(
-            tristate: true,
+          CheckboxListTile.adaptive(
+            // tristate: true,
             title: const Text('CheckboxListTile'),
             value: isChecked,
             onChanged: (bool? value) {
               setState(() {
                 isChecked = value;
               });
+            },
+          ),
+          Switch.adaptive(
+            value: isSwitched,
+            onChanged: (bool value) {
+              setState(() {
+                isSwitched = value;
+              });
+            },
+          ),
+          SwitchListTile.adaptive(
+            title: const Text('SwitchListTile'),
+            value: isSwitched,
+            onChanged: (bool value) {
+              setState(() {
+                isSwitched = value;
+              });
+            },
+          ),
+          Slider.adaptive(
+            max: 10.0,
+            value: sliderValue,
+            divisions: 10,
+            onChanged: (double value) {
+              setState(() {
+                sliderValue = value;
+              });
+              print(value);
             },
           ),
         ],
