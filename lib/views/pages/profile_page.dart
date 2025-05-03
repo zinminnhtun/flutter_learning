@@ -74,15 +74,29 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             InkWell(
               splashColor: Colors.teal,
-              onTap: () {  
+              onTap: () {
                 print("Image Selected");
               },
               child: Container(
-                height: 200,
+                height: 50,
                 width: double.infinity,
-               color: Colors.white12
-                ),
+                color: Colors.white12,
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+              ),
+              child: Text("ElevatedButton"),
+            ),
+            ElevatedButton(onPressed: () {}, child: Text("ElevatedButton")),
+            FilledButton(onPressed: () {}, child: Text("FilledButton")),
+            TextButton(onPressed: () {}, child: Text("TextButton")),
+            OutlinedButton(onPressed: () {}, child: Text("OutlineButton")),
+            CloseButton(),
+            BackButton(),
           ],
         ),
       ),
