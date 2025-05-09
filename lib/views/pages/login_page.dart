@@ -3,15 +3,18 @@ import 'package:flutter_app/views/widget_tree.dart';
 import 'package:flutter_app/views/widgets/hero_widget.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.title});
 
+  final String title;
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController controllerEmail = TextEditingController();
-  TextEditingController controllerPw = TextEditingController();
+  TextEditingController controllerEmail = TextEditingController(text: '123');
+  TextEditingController controllerPw = TextEditingController(text: '456');
+  String confirmedEmail = '123';
+  String confirmedPw = '456';
   @override
   void initState() {
     print("initState");
@@ -33,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            HeroWidget(title: "Login"),
+            HeroWidget(title : widget.title),
             SizedBox(height: 20.0),
             TextField(
               controller: controllerEmail,
@@ -57,25 +60,34 @@ class _LoginPageState extends State<LoginPage> {
               onEditingComplete: () => setState(() {}),
             ),
             SizedBox(height: 20.0),
-            FilledButton(
+            ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return WidgetTree();
-                    },
-                  ),
-                );
+
+                onPressedLogin();
+
               },
-              style: FilledButton.styleFrom(
+              style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 40.0),
               ),
-              child: Text('Get Started'),
+              child: Text(widget.title),
             ),
+            SizedBox(height: 50.0,)
           ],
         ),
       ),
     );
+  }
+  void onPressedLogin(){
+    if(confirmedEmail == controllerEmail.text && confirmedPw == controllerPw.text){
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return WidgetTree();
+          },
+        ),
+          (route)=>false,
+      );
+    }
   }
 }

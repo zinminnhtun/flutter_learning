@@ -17,6 +17,7 @@ class HeroWidget extends StatelessWidget {
               color: Colors.teal,
               fit: BoxFit.cover,
               width: double.infinity,
+              height: 300,
               colorBlendMode: BlendMode.darken,
             ),
           ),
