@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/constants.dart';
-import 'package:flutter_app/views/widgets/hero_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +12,8 @@ class HomePage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            HeroWidget(title: 'Flutter Mapp',),
+            Lottie.asset('assets/lotties/home.json',height: 300),
+
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 10.0),

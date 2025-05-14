@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_app/views/pages/login_page.dart';
+import 'package:flutter_app/views/pages/onboarding.dart';
 
 import 'package:lottie/lottie.dart';
 
@@ -17,7 +18,7 @@ class WelcomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Lottie.asset('assets/lotties/lottie1.json',height: 300),
+                Lottie.asset('assets/lotties/welcome.json',height: 300),
                 FittedBox(
                   child: Text(
                     "Flutter App",
@@ -35,7 +36,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage(title: 'Register',);
+                          return OnboardingPage();
                         },
                       ),
                     );
