@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/constants.dart';
+import 'package:flutter_app/views/widgets/container_widget.dart';
 import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,32 +8,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
             Lottie.asset('assets/lotties/home.json',height: 300),
-
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Basic Layout',
-                        style: KTextStyles.titleTealText,
-                      ),
-                      Text('This is a basic layout of the app',
-                          style: KTextStyles.descriptionText),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            ContainerWidget(title: 'Basic Layout', description: 'This is a description',),
+            ContainerWidget(title: 'Basic Layout', description: 'This is a description',),
+            ContainerWidget(title: 'Basic Layout', description: 'This is a description',),
+            ContainerWidget(title: 'Basic Layout', description: 'This is a description',),
+            ContainerWidget(title: 'Basic Layout', description: 'This is a description',),
+            ContainerWidget(title: 'Basic Layout', description: 'This is a description',),
           ],
         ),
       ),

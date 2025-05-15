@@ -17,10 +17,11 @@ class OnboardingPage extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                Lottie.asset('assets/lotties/home.json', height: 300),
+                Lottie.asset('assets/lotties/hi.json', height: 300),
                 SizedBox(height: 20.0,),
                 Text("Flutter Mapp is the way to learn Flutter Period.",style: KTextStyles.descriptionText,
                 textAlign: TextAlign.justify,),
+                SizedBox(height: 20.0,),
                 FilledButton(
                   onPressed: () {
                     Navigator.push(
