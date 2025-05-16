@@ -36,56 +36,60 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: FractionallySizedBox(
-              widthFactor: 0.5,
-              child: Column(
-                children: [
-                  Lottie.asset('assets/lotties/home.json',height: 300),
-                        
-                  TextField(
-                    controller: controllerEmail,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+            child: LayoutBuilder(
+              builder: (context, BoxConstraints constraints) {
+                return FractionallySizedBox(
+                  widthFactor: constraints.maxWidth > 1000 ? 0.5 : 1.0,
+                  child: Column(
+                    children: [
+                      Lottie.asset('assets/lotties/home.json', height: 300),
+
+                      TextField(
+                        controller: controllerEmail,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          hintText: "Email",
+                        ),
+                        onEditingComplete: () => setState(() {}),
                       ),
-                      hintText: "Email",
-                    ),
-                    onEditingComplete: () => setState(() {}),
-                  ),
-                  SizedBox(height: 10.0),
-                  TextField(
-                    controller: controllerPw,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                      SizedBox(height: 10.0),
+                      TextField(
+                        controller: controllerPw,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          hintText: "Password",
+                        ),
+                        onEditingComplete: () => setState(() {}),
                       ),
-                      hintText: "Password",
-                    ),
-                    onEditingComplete: () => setState(() {}),
+                      SizedBox(height: 20.0),
+                      FilledButton(
+                        onPressed: () {
+                          onPressedLogin();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(double.infinity, 40.0),
+                        ),
+                        child: Text(widget.title),
+                      ),
+                      SizedBox(height: 50.0),
+                    ],
                   ),
-                  SizedBox(height: 20.0),
-                  FilledButton(
-                    onPressed: () {
-                        
-                      onPressedLogin();
-                        
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 40.0),
-                    ),
-                    child: Text(widget.title),
-                  ),
-                  SizedBox(height: 50.0,)
-                ],
-              ),
+                );
+              },
             ),
           ),
         ),
       ),
     );
   }
-  void onPressedLogin(){
-    if(confirmedEmail == controllerEmail.text && confirmedPw == controllerPw.text){
+
+  void onPressedLogin() {
+    if (confirmedEmail == controllerEmail.text &&
+        confirmedPw == controllerPw.text) {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
@@ -93,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
             return WidgetTree();
           },
         ),
-          (route)=>false,
+        (route) => false,
       );
     }
   }
